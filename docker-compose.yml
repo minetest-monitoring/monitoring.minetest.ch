@@ -1,0 +1,95 @@
+version: "2"
+
+services:
+ pushgateway:
+  image: prom/pushgateway:v1.4.0
+  restart: always
+
+ prometheus:
+  image: prom/prometheus:v2.25.0
+  restart: always
+  networks:
+   - terminator
+   - default
+  depends_on:
+   - pushgateway
+   - blackbox
+  volumes:
+   - "./data/prometheus-data:/prometheus"
+   - "./config/prometheus.yml:/etc/prometheus/prometheus.yml"
+  command:
+   - '--config.file=/etc/prometheus/prometheus.yml'
+   - '--storage.tsdb.path=/prometheus'
+   - '--storage.tsdb.retention.time=72h'
+
+ blackbox:
+  image: prom/blackbox-exporter:v0.18.0
+  networks:
+   - terminator
+   - default
+  volumes:
+    - "./config/blackbox.yml:/config/blackbox.yml"
+  command: --config.file=/config/blackbox.yml
+  cap_add:
+   - NET_RAW
+
+ influxdb:
+  image: influxdb:1.8.4
+  restart: always
+  environment:
+   INFLUXDB_ADMIN_ENABLED: "true"
+  volumes:
+   - "./data/influxdb:/var/lib/influxdb"
+  logging:
+   options:
+    max-size: 50m
+
+ grafana:
+  image: grafana/grafana:7.4.3
+  restart: always
+  depends_on:
+   - prometheus
+   - influxdb
+  volumes:
+   - "./config/grafana-data:/var/lib/grafana"
+   - "./grafana.ini:/etc/grafana/grafana.ini"
+
+ nodered:
+  image: nodered/node-red:1.2.9-12-minimal
+  depends_on:
+   - influxdb
+  restart: always
+  environment:
+   - TZ=Europe/Zurich
+  volumes:
+   - "./config/nodered:/data"
+   - "./nodered.js:/data/settings.js"
+  logging:
+   options:
+    max-size: 50m
+
+ nginx:
+  image: nginx:1.19.8
+  networks:
+   - terminator
+   - default
+  restart: always
+  volumes:
+   - "./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+   - "./config/nginx/routes:/routes"
+  environment:
+   VIRTUAL_PORT: 80
+   VIRTUAL_HOST: monitoring.minetest.land
+   LETSENCRYPT_EMAIL: thomas@rudin.io
+   LETSENCRYPT_HOST: monitoring.minetest.land
+  depends_on:
+   - grafana
+   - pushgateway
+   - nodered
+  logging:
+   options:
+    max-size: 50m
+
+networks:
+ terminator:
+  external: true
