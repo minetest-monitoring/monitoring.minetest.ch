@@ -51,8 +51,8 @@ services:
    - prometheus
    - influxdb
   volumes:
-   - "./config/grafana-data:/var/lib/grafana"
-   - "./grafana.ini:/etc/grafana/grafana.ini"
+   - "./grafana-data:/var/lib/grafana"
+   - "./config/grafana.ini:/etc/grafana/grafana.ini"
 
  nodered:
   image: nodered/node-red:1.2.9-12-minimal
