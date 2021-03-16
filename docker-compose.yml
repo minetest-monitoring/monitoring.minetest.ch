@@ -24,6 +24,7 @@ services:
 
  blackbox:
   image: prom/blackbox-exporter:v0.18.0
+  restart: always
   networks:
    - terminator
    - default
