@@ -6,7 +6,7 @@ services:
   restart: always
 
  prometheus:
-  image: prom/prometheus:v2.25.2
+  image: prom/prometheus:v2.26.0
   restart: always
   networks:
    - terminator
