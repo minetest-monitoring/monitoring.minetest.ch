@@ -35,7 +35,7 @@ services:
    - NET_RAW
 
  influxdb:
-  image: influxdb:1.8.4
+  image: influxdb:1.8.5
   restart: always
   environment:
    INFLUXDB_ADMIN_ENABLED: "true"
