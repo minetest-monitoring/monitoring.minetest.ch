@@ -56,7 +56,7 @@ services:
    - "./config/grafana.ini:/etc/grafana/grafana.ini"
 
  nodered:
-  image: nodered/node-red:2.0.4-12-minimal
+  image: nodered/node-red:2.0.5-12-minimal
   depends_on:
    - influxdb
   restart: always
