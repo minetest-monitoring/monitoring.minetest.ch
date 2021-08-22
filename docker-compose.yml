@@ -83,6 +83,13 @@ services:
    VIRTUAL_HOST: monitoring.minetest.land
    LETSENCRYPT_EMAIL: thomas@rudin.io
    LETSENCRYPT_HOST: monitoring.minetest.land
+  labels:
+    - "traefik.enable=true"
+    - "traefik.docker.network=terminator"
+    - "traefik.http.routers.monitoring.rule=Host(`monitoring.minetest.land`)"
+    - "traefik.http.services.monitoring.loadbalancer.server.port=80"
+    - "traefik.http.routers.monitoring.entrypoints=websecure"
+    - "traefik.http.routers.monitoring.tls.certresolver=default"
   depends_on:
    - grafana
    - pushgateway
