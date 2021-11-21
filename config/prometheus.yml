@@ -42,11 +42,6 @@ scrape_configs:
       static_configs:
        - targets: ['pandorabox.io']
 
-    - job_name: 'contentdb'
-      scheme: https
-      static_configs:
-       - targets: ['content.minetest.net']
-
     - job_name: 'blackbox'
       params:
        module: [http_2xx]
