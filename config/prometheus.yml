@@ -35,7 +35,7 @@ scrape_configs:
       scheme: https
       metrics_path: /minetest-exporter/metrics
       static_configs:
-       - targets: ['damocles.minetest.land', 'pandorabox.io', 'test.pandorabox.io']
+       - targets: ['damocles.minetest.land', 'pandorabox.io', 'test.pandorabox.io', 'banananaland.minetest.land']
 
     - job_name: 'postgres'
       metrics_path: /postgres-exporter/metrics
