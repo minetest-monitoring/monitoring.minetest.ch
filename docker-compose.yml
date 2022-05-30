@@ -23,7 +23,7 @@ services:
    - '--storage.tsdb.retention.time=72h'
 
  blackbox:
-  image: prom/blackbox-exporter:v0.20.0
+  image: prom/blackbox-exporter:v0.21.0
   restart: always
   networks:
    - terminator
