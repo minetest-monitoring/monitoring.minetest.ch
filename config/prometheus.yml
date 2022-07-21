@@ -37,11 +37,6 @@ scrape_configs:
       static_configs:
        - targets: ['damocles.minetest.land', 'pandorabox.io', 'test.pandorabox.io', 'bananana.minetest.land']
 
-    - job_name: 'postgres'
-      metrics_path: /postgres-exporter/metrics
-      static_configs:
-       - targets: ['pandorabox.io']
-
     - job_name: 'blackbox'
       params:
        module: [http_2xx]
