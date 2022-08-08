@@ -46,7 +46,7 @@ scrape_configs:
         - https://pandorabox.io/
         - https://damocles.minetest.land
         - https://blockexchange.minetest.land
-        - https://monitoring.minetest.land
+        - https://monitoring.minetest.ch
         - https://content.minetest.net
         - https://forum.minetest.net
         - https://wiki.minetest.net
