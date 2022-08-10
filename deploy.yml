@@ -6,7 +6,7 @@
   tasks:
     - name: Checkout git master
       ansible.builtin.git:
-        repo: https://github.com/minetest-monitoring/monitoring.minetest.land
+        repo: https://github.com/minetest-monitoring/monitoring.minetest.ch
         dest: "{{ compose_directory }}"
         single_branch: yes
         version: master
