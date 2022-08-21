@@ -2,7 +2,7 @@
 - hosts: all
   remote_user: root
   vars:
-    compose_directory: /data/monitoring.minetest.land
+    compose_directory: /data/monitoring.minetest.ch
   tasks:
     - name: Checkout git master
       ansible.builtin.git:

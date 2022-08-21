@@ -11,7 +11,7 @@ module.exports = {
 	adminAuth: require('node-red-auth-github')({
 		clientID: "7f3252c8de0c5ec6b12c",
 		clientSecret: process.env.GITHUB_SECRET,
-		baseURL: "https://monitoring.minetest.land/nodered/",
+		baseURL: "https://monitoring.minetest.ch/nodered/",
 		default: {
 			permissions: "read"
 		},
