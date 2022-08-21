@@ -10,6 +10,12 @@
         dest: "{{ compose_directory }}"
         single_branch: yes
         version: master
+
+    - name: Template docker-compose.yml
+      template:
+        src: "docker-compose.yml"
+        dest: "{{compose_directory}}/docker-compose.yml"
+
     - name: Create and start services
       community.general.docker_compose:
         project_src: "{{ compose_directory }}"

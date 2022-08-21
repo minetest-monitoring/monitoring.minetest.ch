@@ -48,6 +48,9 @@ services:
  grafana:
   image: grafana/grafana:9.0.7
   restart: always
+  environment:
+   GF_AUTH_GITHUB_CLIENT_SECRET: "{{grafana_auth_github_secret}}"
+   GF_SECURITY_ADMIN_PASSWORD: "{{grafana_admin_pass}}"
   depends_on:
    - prometheus
    - influxdb
@@ -61,7 +64,8 @@ services:
    - influxdb
   restart: always
   environment:
-   - TZ=Europe/Zurich
+   TZ: Europe/Zurich
+   GITHUB_SECRET: "{{nodered_auth_github_secret}}"
   volumes:
    - "./data/nodered:/data"
    - "./config/nodered.js:/data/settings.js"
