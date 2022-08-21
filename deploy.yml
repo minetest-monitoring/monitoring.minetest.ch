@@ -9,12 +9,13 @@
         repo: https://github.com/minetest-monitoring/monitoring.minetest.ch
         dest: "{{ compose_directory }}"
         single_branch: yes
+        force: yes
         version: master
 
-    - name: Template docker-compose.yml
+    - name: Template docker-compose.secrets.yml
       template:
-        src: "docker-compose.yml"
-        dest: "{{compose_directory}}/docker-compose.yml"
+        src: "docker-compose.secrets.yml"
+        dest: "{{compose_directory}}/docker-compose.override.yml"
 
     - name: Create and start services
       community.general.docker_compose:
