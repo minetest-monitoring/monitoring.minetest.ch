@@ -12,7 +12,7 @@
         force: yes
         version: master
 
-    - name: Template docker-compose.secrets.yml
+    - name: Template docker-compose.yml
       template:
         src: "docker-compose.yml"
         dest: "{{compose_directory}}/docker-compose.yml"
