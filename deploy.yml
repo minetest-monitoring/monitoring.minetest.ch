@@ -14,8 +14,8 @@
 
     - name: Template docker-compose.secrets.yml
       template:
-        src: "docker-compose.secrets.yml"
-        dest: "{{compose_directory}}/docker-compose.override.yml"
+        src: "docker-compose.yml"
+        dest: "{{compose_directory}}/docker-compose.yml"
 
     - name: Create and start services
       community.general.docker_compose:
