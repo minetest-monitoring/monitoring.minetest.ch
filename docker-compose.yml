@@ -91,7 +91,7 @@ services:
     - "traefik.http.routers.monitoring.tls.certresolver=default"
     - "traefik.http.routers.monitoring.middlewares=monitoring_land_ch_redir"
     - "traefik.http.middlewares.monitoring_land_ch_redir.redirectregex.regex=^https?://monitoring\\.minetest\\.land/(.*)"
-    - "traefik.http.middlewares.monitoring_land_ch_redir.redirectregex.replacement=https://monitoring.minetest.ch/$$"
+    - "traefik.http.middlewares.monitoring_land_ch_redir.redirectregex.replacement=https://monitoring.minetest.ch/$$1"
   depends_on:
    - grafana
    - pushgateway
