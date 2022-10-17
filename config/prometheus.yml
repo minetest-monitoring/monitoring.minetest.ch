@@ -23,19 +23,19 @@ scrape_configs:
       scheme: https
       metrics_path: /metrics/green
       static_configs:
-       - targets: ['blockexchange.minetest.land']
+       - targets: ['blockexchange.minetest.ch']
 
     - job_name: 'blockexchange_blue'
       scheme: https
       metrics_path: /metrics/blue
       static_configs:
-       - targets: ['blockexchange.minetest.land']
+       - targets: ['blockexchange.minetest.ch']
 
     - job_name: 'minetest-engine'
       scheme: https
       metrics_path: /minetest-exporter/metrics
       static_configs:
-       - targets: ['damocles.minetest.land', 'pandorabox.io', 'test.pandorabox.io', 'bananana.minetest.land']
+       - targets: ['pandorabox.io', 'test.pandorabox.io', 'bananaland.minetest.ch']
 
     - job_name: 'blackbox'
       params:
@@ -44,8 +44,7 @@ scrape_configs:
       static_configs:
       - targets:
         - https://pandorabox.io/
-        - https://damocles.minetest.land
-        - https://blockexchange.minetest.land
+        - https://blockexchange.minetest.ch
         - https://monitoring.minetest.ch
         - https://content.minetest.net
         - https://forum.minetest.net
