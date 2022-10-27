@@ -73,6 +73,10 @@ services:
    options:
     max-size: 50m
 
+ tor-proxy:
+  image: peterdavehello/tor-socks-proxy:latest
+  restart: always
+
  nginx:
   image: nginx:1.23.2
   networks:
