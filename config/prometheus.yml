@@ -50,6 +50,7 @@ scrape_configs:
         - https://forum.minetest.net
         - https://wiki.minetest.net
         - https://www.minetest.net
+        - https://servers.minetest.net
       relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
