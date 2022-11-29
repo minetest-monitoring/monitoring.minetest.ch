@@ -2,7 +2,7 @@ version: "2"
 
 services:
  pushgateway:
-  image: prom/pushgateway:v1.5.0
+  image: prom/pushgateway:v1.5.1
   restart: always
 
  prometheus:
