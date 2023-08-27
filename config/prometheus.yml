@@ -13,6 +13,7 @@ scrape_configs:
       static_configs:
       - targets:
         - akheron.rudin.io:9100
+        - styx.rudin.io:9100
 
     - job_name: 'mapserver'
       scheme: https
@@ -46,6 +47,7 @@ scrape_configs:
       static_configs:
       - targets:
         - https://pandorabox.io/
+        - https://hosting.minetest.ch
         - https://blockexchange.minetest.ch
         - https://monitoring.minetest.ch
         - https://content.minetest.net
