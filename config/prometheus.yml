@@ -21,11 +21,16 @@ scrape_configs:
       static_configs:
        - targets: ['pandorabox.io']
 
-    - job_name: 'mtweb'
+    - job_name: 'mtweb-with-path'
       scheme: https
       metrics_path: /mtweb/metrics
       static_configs:
        - targets: ['pandorabox.io']
+
+    - job_name: 'mtweb'
+      scheme: https
+      static_configs:
+       - targets: ['web.minetest.ch']
 
     - job_name: 'blockexchange_green'
       scheme: https
