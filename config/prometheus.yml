@@ -21,8 +21,8 @@ scrape_configs:
        password: {{traefik_password}}
       static_configs:
       - targets:
-        - akheron.rudin.io:9100
-        - styx.rudin.io:9100
+        - akheron.rudin.io
+        - styx.rudin.io
 
     - job_name: 'mapserver'
       scheme: https
