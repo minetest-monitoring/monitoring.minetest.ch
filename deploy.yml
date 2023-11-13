@@ -8,7 +8,6 @@
       ansible.builtin.git:
         repo: https://github.com/minetest-monitoring/monitoring.minetest.ch
         dest: "{{ compose_directory }}"
-        single_branch: yes
         force: yes
         version: master
 
@@ -16,6 +15,11 @@
       template:
         src: "docker-compose.yml"
         dest: "{{compose_directory}}/docker-compose.yml"
+
+    - name: Template prometheus.yml
+      template:
+        src: "config/prometheus.yml"
+        dest: "{{compose_directory}}/config/prometheus.yml"
 
     - name: Create and start services
       community.general.docker_compose:

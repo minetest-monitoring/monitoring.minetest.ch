@@ -15,6 +15,15 @@ scrape_configs:
         - akheron.rudin.io:9100
         - styx.rudin.io:9100
 
+    - job_name: 'traefik'
+      basic_auth:
+       username: admin
+       password: {{traefik_password}}
+      static_configs:
+      - targets:
+        - akheron.rudin.io:9100
+        - styx.rudin.io:9100
+
     - job_name: 'mapserver'
       scheme: https
       metrics_path: /map/metrics
