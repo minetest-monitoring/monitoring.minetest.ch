@@ -4,17 +4,26 @@ global:
      monitor: 'my-monitor'
 
 scrape_configs:
+    # pushgateway for the minetest-monitoring mod
     - job_name: 'minetest'
       honor_labels: true
       static_configs:
        - targets: ['pushgateway:9091']
 
+    # public minetest-related nodes
     - job_name: 'nodes'
       static_configs:
       - targets:
         - phlegethon.rudin.io:9100
         - styx.rudin.io:9100
 
+    # minetest git hosting
+    - job_name: 'gitea'
+      static_configs:
+      - targets:
+        - git.minetest.land
+
+    # traefik metric for the minetest-nodes
     - job_name: 'traefik'
       basic_auth:
        username: admin
@@ -24,41 +33,39 @@ scrape_configs:
         - phlegethon.rudin.io
         - styx.rudin.io
 
+    # mapserver metrics
     - job_name: 'mapserver'
       scheme: https
       metrics_path: /map/metrics
       static_configs:
        - targets: ['pandorabox.io']
 
-    - job_name: 'mtweb-with-path'
-      scheme: https
-      metrics_path: /mtweb/metrics
-      static_configs:
-       - targets: ['pandorabox.io']
-
+    # emscripten-based minetest client
     - job_name: 'mtweb'
       scheme: https
       static_configs:
        - targets: ['web.minetest.ch']
 
+    # blockexchange instances
     - job_name: 'blockexchange_green'
       scheme: https
       metrics_path: /metrics/green
       static_configs:
        - targets: ['blockexchange.minetest.ch']
-
     - job_name: 'blockexchange_blue'
       scheme: https
       metrics_path: /metrics/blue
       static_configs:
        - targets: ['blockexchange.minetest.ch']
 
+    # minetest-engine exporter
     - job_name: 'minetest-engine'
       scheme: https
       metrics_path: /minetest-exporter/metrics
       static_configs:
        - targets: ['pandorabox.io', 'test.pandorabox.io', 'bananaland.minetest.ch']
 
+    # blackbox exporter for various hosts
     - job_name: 'blackbox'
       scrape_interval: 1m
       params:
