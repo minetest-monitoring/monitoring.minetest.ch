@@ -46,15 +46,9 @@ scrape_configs:
       static_configs:
        - targets: ['web.minetest.ch']
 
-    # blockexchange instances
-    - job_name: 'blockexchange_green'
+    # blockexchange instance
+    - job_name: 'blockexchange'
       scheme: https
-      metrics_path: /metrics/green
-      static_configs:
-       - targets: ['blockexchange.minetest.ch']
-    - job_name: 'blockexchange_blue'
-      scheme: https
-      metrics_path: /metrics/blue
       static_configs:
        - targets: ['blockexchange.minetest.ch']
 
