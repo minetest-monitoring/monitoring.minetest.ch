@@ -22,8 +22,6 @@
         dest: "{{compose_directory}}/config/prometheus.yml"
 
     - name: Create and start services
-      community.general.docker_compose:
-        project_src: "{{ compose_directory }}"
-        pull: yes
-        build: yes
-        remove_orphans: yes
+      shell:
+        cmd: "docker-compose up -d --build --remove-orphans"
+        chdir: "{{ compose_directory }}"
