@@ -98,10 +98,10 @@ services:
     max-size: 50m
 
  redirect:
-   image: morbz/docker-web-redirect:v1.0
+   image: nginx:1.27.3
    restart: always
-   environment:
-    - REDIRECT_TARGET=monitoring.luanti.ch
+   volumes:
+   - "./config/nginx/redirect.conf:/etc/nginx/conf.d/default.conf:ro"
    labels:
     - "traefik.enable=true"
     - "traefik.docker.network=terminator"
