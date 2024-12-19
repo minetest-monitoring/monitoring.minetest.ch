@@ -70,7 +70,7 @@ scrape_configs:
         - https://pandorabox.io/
         - https://hosting.minetest.ch
         - https://blockexchange.minetest.ch
-        - https://monitoring.minetest.ch
+        - https://monitoring.luanti.ch
         - https://content.minetest.net
         - https://forum.minetest.net
         - https://wiki.minetest.net
